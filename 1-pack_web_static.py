@@ -17,7 +17,7 @@ def do_pack():
         if not os.path.isdir("versions"):
             local("mkdir versions")
         local_command = local("tar -cvzf versions/web_static_{}.tgz web_static"
-           .format(full_date))
+                              .format(full_date))
         return local_command
     except Exception:
         return None
