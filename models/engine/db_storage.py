@@ -20,13 +20,12 @@ class DBStorage:
 
     def __init__(self):
         """ Instantiation of DBStorage class """
-        self.__engine = create_engine(
-        'mysql+mysqldb://{}:{}@{}/{}'.format(
-                                                    getenv('HBNB_MYSQL_USER'),
-                                                    getenv('HBNB_MYSQL_PWD'),
-                                                    getenv('HBNB_MYSQL_HOST'),
-                                                    getenv('HBNB_MYSQL_DB')),
-        pool_pre_ping=True)
+        self.__engine = create_engine('mysql+mysqldb://{}:{}@{}/{}'.format(
+                                      getenv('HBNB_MYSQL_USER'),
+                                      getenv('HBNB_MYSQL_PWD'),
+                                      getenv('HBNB_MYSQL_HOST'),
+                                      getenv('HBNB_MYSQL_DB')),
+                                      pool_pre_ping=True)
         if getenv('HBNB_ENV') is 'test':
             Base.metada.drop_all(self.__engine)
 
@@ -43,7 +42,7 @@ class DBStorage:
             cls_list = [State, City, User, Place, Review]
             for c in cls_list:
                 for obj in self.session.query(eval(cls)).all():
-                        dic[type(obj).__name__ + "." + obj.id] = obj
+                    dic[type(obj).__name__ + "." + obj.id] = obj
         return dic
 
     def new(self, obj):
