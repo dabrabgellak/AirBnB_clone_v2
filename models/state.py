@@ -21,6 +21,7 @@ class State(BaseModel, Base):
             "City", backref="state", cascade="delete")
     else:
         name = ""
+
         @property
         def cities(self):
             """ Getter attribute """
