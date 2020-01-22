@@ -27,7 +27,7 @@ class FileStorage:
         """
         cls_dic = {}
         for key, value in self.__objects.items():
-            if type(value) is cls:
+            if type(value) == cls:
                 cls_dic[key] = value
         return cls_dic
 
