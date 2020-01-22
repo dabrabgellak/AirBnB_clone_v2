@@ -21,9 +21,9 @@ class FileStorage:
     __objects = {}
 
     def all(self, cls=None):
-        """returns a dictionary
-        Return:
-            returns a dictionary of __object
+        """
+           Return:
+           returns a dictionary of __object
         """
         cls_dic = {}
         for key, value in self.__objects.items():

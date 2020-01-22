@@ -37,14 +37,12 @@ class DBStorage:
         """
         dic = {}
         if cls:
-            for obj in self.__session.query(cls).all():
+            for obj in self.__session.query(eval(cls)).all():
                 dic[type(obj).__name__ + "." + obj.id] = obj
         else:
             cls_list = [State, City, User, Place, Review]
             for c in cls_list:
-                for obj in self.__session.\
-                    query(c).\
-                    all():
+                for obj in self.session.query(eval(cls)).all():
                         dic[type(obj).__name__ + "." + obj.id] = obj
         return dic
 
@@ -73,4 +71,4 @@ class DBStorage:
             Calls remove method on the private session attr
             or close on the class Session.
         """
-        self.__session.remove()
+        self.__session.close()
