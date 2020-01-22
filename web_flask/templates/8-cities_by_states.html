@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<HTML lang="en">
+    <HEAD>
+        <TITLE>HBNB</TITLE>
+    </HEAD>
+    <BODY>
+        <H1>States</H1>
+        <UL> {% for trav in all_states.values() | sort(atrribute="name") %}
+            <LI>{{trav.id}}: <B>{{trav.name}}</B>
+                <UL>{% for erse in state.cities | sort(attribute='name') %}
+                    <LI>{{erse.id}}: <B>{{erse.name}}</B></LI>
+                </UL>{% endfor %}
+            </LI>
+        </UL> {% endfor %}
+    </BODY>
+</HTML>
