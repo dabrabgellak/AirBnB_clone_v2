@@ -5,8 +5,10 @@
     </HEAD>
     <BODY>
         <H1>States</H1>
-        <UL> {% for trav in all_states.values() | sort(atrribute="name")%}
+        <UL>
+            {% for trav in all_states.values() | sort(attribute="name") %}
             <LI>{{trav.id}}: <B>{{trav.name}}</B></LI>
-        </UL> {% endfor %}
+            {% endfor %}
+        </UL>
     </BODY>
 </HTML>

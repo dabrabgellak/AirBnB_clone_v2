@@ -4,15 +4,14 @@ from flask import Flask, render_template
 
 app = Flask(__name__)
 
-
 @app.teardown_appcontext
-def tear_down_app_context():
+def tear_down_app_context(error):
     storage.close()
 
 
 @app.route('/states_list', strict_slashes=False)
 def states_list():
-    all_states = storage.all(state)
+    all_states = storage.all('State')
     return render_template('7-states_list.html', all_states=all_states)
 
 
