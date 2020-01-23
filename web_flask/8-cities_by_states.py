@@ -6,13 +6,13 @@ app = Flask(__name__)
 
 
 @app.teardown_appcontext
-def tear_down_app_context():
+def tear_down_app_context(error):
     storage.close()
 
 
 @app.route('/cities_by_states', strict_slashes=False)
 def states_list():
-    all_states = storage.all(state)
+    all_states = storage.all('State')
     return render_template('8-cities_by_states.html', all_states=all_states)
 
 
