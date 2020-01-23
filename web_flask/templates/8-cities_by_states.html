@@ -5,12 +5,16 @@
     </HEAD>
     <BODY>
         <H1>States</H1>
-        <UL> {% for trav in all_states.values() | sort(atrribute="name") %}
+        <UL> 
+            {% for trav in all_states.values() | sort(attribute='name') %}
             <LI>{{trav.id}}: <B>{{trav.name}}</B>
-                <UL>{% for erse in state.cities | sort(attribute='name') %}
-                    <LI>{{erse.id}}: <B>{{erse.name}}</B></LI>
-                </UL>{% endfor %}
+                <UL>
+                        {% for values in trav.cities | sort(attribute='name') %}
+                        <LI>{{ values.id }}: <B>{{ values.name }}</B></LI>
+                        {% endfor %}
+                </UL>
             </LI>
-        </UL> {% endfor %}
+            {% endfor %}
+        </UL>
     </BODY>
 </HTML>
